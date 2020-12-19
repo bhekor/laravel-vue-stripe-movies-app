@@ -3,7 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
-/resources/js
+/resources/js/*.vue
 .env
 .env.backup
 .phpunit.result.cache

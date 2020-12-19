@@ -84,6 +84,88 @@
         </a>
       </div>
     </header>
+
+    <div class="container mt-5 px-40">
+      <div
+        class="relative text-gray-600 justify-self-center"
+        x-data="{ isOpen: true}"
+        x-on:click.away="isOpen=false"
+      >
+        <input
+          type="search"
+          name="serch"
+          placeholder="Search"
+          class="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none w-full"
+          v-model="searchTerm"
+          x-on:focus="isOpen=true"
+          x-on:keydown.escape.window="isOpen=false"
+          x-on:keydown.shift.tab="isOpen=false"
+          x-on:keydown="isOpen=true"
+        />
+        <button type="submit" class="absolute right-0 top-0 mt-3 mr-4">
+          <svg
+            class="h-4 w-4 fill-current"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            version="1.1"
+            id="Capa_1"
+            x="0px"
+            y="0px"
+            viewBox="0 0 56.966 56.966"
+            style="enable-background: new 0 0 56.966 56.966"
+            xml:space="preserve"
+            width="512px"
+            height="512px"
+          >
+            <path
+              d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"
+            />
+          </svg>
+        </button>
+        <div
+          class="absolute mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 z-50 w-full overflow-y-scroll h-auto max-h-96"
+          v-if="searchResults != ''"
+          x-show.transition.opacity="isOpen"
+        >
+          <ul>
+            <li
+              v-for="(searchResult, index) in searchResults"
+              :key="index"
+              class="border-b border-gray-400"
+            >
+              <router-link
+                :to="{ name: 'single', params: { id: searchResult.id } }"
+                class="block hover:bg-gray-700 hover:text-white px-3 py-3 text-decoration-none flex flex-row items-center"
+              >
+                <img
+                  v-if="searchResult.poster_path"
+                  :src="'https://image.tmdb.org/t/p/w500/' + searchResult.poster_path"
+                  :alt="'{searchResult.title}'"
+                  class="w-10 lg:w-20"
+                />
+                <img
+                  v-else
+                  src="https://via.placeholder.com/150"
+                  class="w-10 lg:w-20"
+                  alt=""
+                  srcset=""
+                />
+                <span class="ml-4" v-if="searchResult.title">{{
+                  searchResult.title
+                }}</span>
+                <span class="ml-4" v-if="searchResult.name">{{
+                  searchResult.title
+                }}</span>
+              </router-link>
+            </li>
+            <li v-if="searchResults == ''" class="flex justify-center py-10">
+              No result found for you search '<strong>{{ searchTerm }}</strong
+              >'!
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -94,6 +176,8 @@ export default {
   data() {
     return {
       isLoggedIn: false,
+      searchTerm: "",
+      searchResults: [],
     };
   },
   mounted() {
@@ -101,6 +185,30 @@ export default {
       this.isLoggedIn = true;
     });
     this.isLoggedIn = !!localStorage.getItem("token");
+  },
+  watch: {
+    searchTerm: function (query) {
+      var self = this;
+      if (query.length >= 3) {
+        var settings = {
+          async: true,
+          crossDomain: true,
+          url: "https://api.themoviedb.org/3/search/movie?query=" + query,
+          method: "GET",
+          headers: {
+            "content-type": "application/json;charset=utf-8",
+            authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmN2U3MmNiZDdhMjVhYjAwNGU2OWQ4MTU3YTQwYzc3ZiIsInN1YiI6IjVmYmE0YjVjMDgxNmM3MDAzZThjYjk4OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5nQCtapHMYchh_WH0ZWXEdaqTH6i-G0DzZGwM-9pT0w",
+          },
+          processData: false,
+          data: "{}",
+        };
+        $.ajax(settings).done(function (response) {
+          self.searchResults = response.results;
+          console.log(self.searchResults);
+        });
+      }
+    },
   },
   methods: {
     logout() {

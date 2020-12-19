@@ -2099,11 +2099,95 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      isLoggedIn: false
+      isLoggedIn: false,
+      searchTerm: "",
+      searchResults: []
     };
   },
   mounted: function mounted() {
@@ -2113,6 +2197,30 @@ __webpack_require__.r(__webpack_exports__);
       _this.isLoggedIn = true;
     });
     this.isLoggedIn = !!localStorage.getItem("token");
+  },
+  watch: {
+    searchTerm: function searchTerm(query) {
+      var self = this;
+
+      if (query.length >= 3) {
+        var settings = {
+          async: true,
+          crossDomain: true,
+          url: "https://api.themoviedb.org/3/search/movie?query=" + query,
+          method: "GET",
+          headers: {
+            "content-type": "application/json;charset=utf-8",
+            authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmN2U3MmNiZDdhMjVhYjAwNGU2OWQ4MTU3YTQwYzc3ZiIsInN1YiI6IjVmYmE0YjVjMDgxNmM3MDAzZThjYjk4OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5nQCtapHMYchh_WH0ZWXEdaqTH6i-G0DzZGwM-9pT0w"
+          },
+          processData: false,
+          data: "{}"
+        };
+        $.ajax(settings).done(function (response) {
+          self.searchResults = response.results;
+          console.log(self.searchResults);
+        });
+      }
+    }
   },
   methods: {
     logout: function logout() {
@@ -2377,35 +2485,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -40218,7 +40297,179 @@ var render = function() {
           ]
         )
       ]
-    )
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "container mt-5 px-40" }, [
+      _c(
+        "div",
+        {
+          staticClass: "relative text-gray-600 justify-self-center",
+          attrs: {
+            "x-data": "{ isOpen: true}",
+            "x-on:click.away": "isOpen=false"
+          }
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.searchTerm,
+                expression: "searchTerm"
+              }
+            ],
+            staticClass:
+              "bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none w-full",
+            attrs: {
+              type: "search",
+              name: "serch",
+              placeholder: "Search",
+              "x-on:focus": "isOpen=true",
+              "x-on:keydown.escape.window": "isOpen=false",
+              "x-on:keydown.shift.tab": "isOpen=false",
+              "x-on:keydown": "isOpen=true"
+            },
+            domProps: { value: _vm.searchTerm },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.searchTerm = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "absolute right-0 top-0 mt-3 mr-4",
+              attrs: { type: "submit" }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "h-4 w-4 fill-current",
+                  staticStyle: { "enable-background": "new 0 0 56.966 56.966" },
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                    version: "1.1",
+                    id: "Capa_1",
+                    x: "0px",
+                    y: "0px",
+                    viewBox: "0 0 56.966 56.966",
+                    "xml:space": "preserve",
+                    width: "512px",
+                    height: "512px"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"
+                    }
+                  })
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _vm.searchResults != ""
+            ? _c(
+                "div",
+                {
+                  staticClass:
+                    "absolute mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 z-50 w-full overflow-y-scroll h-auto max-h-96",
+                  attrs: { "x-show.transition.opacity": "isOpen" }
+                },
+                [
+                  _c(
+                    "ul",
+                    [
+                      _vm._l(_vm.searchResults, function(searchResult, index) {
+                        return _c(
+                          "li",
+                          {
+                            key: index,
+                            staticClass: "border-b border-gray-400"
+                          },
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                staticClass:
+                                  "block hover:bg-gray-700 hover:text-white px-3 py-3 text-decoration-none flex flex-row items-center",
+                                attrs: {
+                                  to: {
+                                    name: "single",
+                                    params: { id: searchResult.id }
+                                  }
+                                }
+                              },
+                              [
+                                searchResult.poster_path
+                                  ? _c("img", {
+                                      staticClass: "w-10 lg:w-20",
+                                      attrs: {
+                                        src:
+                                          "https://image.tmdb.org/t/p/w500/" +
+                                          searchResult.poster_path,
+                                        alt: "{searchResult.title}"
+                                      }
+                                    })
+                                  : _c("img", {
+                                      staticClass: "w-10 lg:w-20",
+                                      attrs: {
+                                        src: "https://via.placeholder.com/150",
+                                        alt: "",
+                                        srcset: ""
+                                      }
+                                    }),
+                                _vm._v(" "),
+                                searchResult.title
+                                  ? _c("span", { staticClass: "ml-4" }, [
+                                      _vm._v(_vm._s(searchResult.title))
+                                    ])
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                searchResult.name
+                                  ? _c("span", { staticClass: "ml-4" }, [
+                                      _vm._v(_vm._s(searchResult.title))
+                                    ])
+                                  : _vm._e()
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      }),
+                      _vm._v(" "),
+                      _vm.searchResults == ""
+                        ? _c(
+                            "li",
+                            { staticClass: "flex justify-center py-10" },
+                            [
+                              _vm._v(
+                                "\n            No result found for you search '"
+                              ),
+                              _c("strong", [_vm._v(_vm._s(_vm.searchTerm))]),
+                              _vm._v("'!\n          ")
+                            ]
+                          )
+                        : _vm._e()
+                    ],
+                    2
+                  )
+                ]
+              )
+            : _vm._e()
+        ]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -40739,55 +40990,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "lg:mx-20 md:mx-20 text-sm text-gray-900" }, [
-    _c(
-      "div",
-      { staticClass: "relative text-gray-600 mt-10 justify-self-center" },
-      [
-        _c("input", {
-          staticClass:
-            "bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none w-full",
-          attrs: { type: "search", name: "serch", placeholder: "Search" }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "absolute right-0 top-0 mt-3 mr-4",
-            attrs: { type: "submit" }
-          },
-          [
-            _c(
-              "svg",
-              {
-                staticClass: "h-4 w-4 fill-current",
-                staticStyle: { "enable-background": "new 0 0 56.966 56.966" },
-                attrs: {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                  version: "1.1",
-                  id: "Capa_1",
-                  x: "0px",
-                  y: "0px",
-                  viewBox: "0 0 56.966 56.966",
-                  "xml:space": "preserve",
-                  width: "512px",
-                  height: "512px"
-                }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"
-                  }
-                })
-              ]
-            )
-          ]
-        )
-      ]
-    ),
-    _vm._v(" "),
     _c("h1", { staticClass: "text-3xl pb-5 pt-5 block font-bold" }, [
       _vm._v("Popular Movies")
     ]),
