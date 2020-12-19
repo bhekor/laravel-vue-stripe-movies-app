@@ -171,6 +171,7 @@
 
 <script>
 import User from "../api/User";
+import movie from "../api/Movie";
 
 export default {
   data() {
@@ -193,19 +194,17 @@ export default {
         var settings = {
           async: true,
           crossDomain: true,
-          url: "https://api.themoviedb.org/3/search/movie?query=" + query,
+          url: `${movie.apiUrl}/search/movie?query=` + query,
           method: "GET",
           headers: {
             "content-type": "application/json;charset=utf-8",
-            authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmN2U3MmNiZDdhMjVhYjAwNGU2OWQ4MTU3YTQwYzc3ZiIsInN1YiI6IjVmYmE0YjVjMDgxNmM3MDAzZThjYjk4OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5nQCtapHMYchh_WH0ZWXEdaqTH6i-G0DzZGwM-9pT0w",
+            authorization: `Bearer ${movie.bearer}`,
           },
           processData: false,
           data: "{}",
         };
         $.ajax(settings).done(function (response) {
           self.searchResults = response.results;
-          console.log(self.searchResults);
         });
       }
     },

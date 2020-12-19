@@ -170,6 +170,8 @@
 </template>
 
 <script>
+import movie from "../api/Movie";
+
 export default {
   name: "Home",
   data() {
@@ -193,13 +195,12 @@ export default {
       async: true,
       crossDomain: true,
       url:
-        "https://api.themoviedb.org/3/trending/all/day?api_key=f7e72cbd7a25ab004e69d8157a40c77f&language=en-US&page=" +
+        `${movie.apiUrl}/trending/all/day?api_key=f7e72cbd7a25ab004e69d8157a40c77f&language=en-US&page=` +
         pageNumber,
       method: "GET",
       headers: {
         "content-type": "application/json;charset=utf-8",
-        authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmN2U3MmNiZDdhMjVhYjAwNGU2OWQ4MTU3YTQwYzc3ZiIsInN1YiI6IjVmYmE0YjVjMDgxNmM3MDAzZThjYjk4OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5nQCtapHMYchh_WH0ZWXEdaqTH6i-G0DzZGwM-9pT0w",
+        authorization: `Bearer ${movie.bearer}`,
       },
       processData: false,
       data: "{}",

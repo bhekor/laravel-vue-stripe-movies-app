@@ -2010,6 +2010,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _api_User__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api/User */ "./resources/js/api/User.js");
+/* harmony import */ var _api_Movie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../api/Movie */ "./resources/js/api/Movie.js");
 //
 //
 //
@@ -2181,6 +2182,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2206,18 +2208,17 @@ __webpack_require__.r(__webpack_exports__);
         var settings = {
           async: true,
           crossDomain: true,
-          url: "https://api.themoviedb.org/3/search/movie?query=" + query,
+          url: "".concat(_api_Movie__WEBPACK_IMPORTED_MODULE_1__["default"].apiUrl, "/search/movie?query=") + query,
           method: "GET",
           headers: {
             "content-type": "application/json;charset=utf-8",
-            authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmN2U3MmNiZDdhMjVhYjAwNGU2OWQ4MTU3YTQwYzc3ZiIsInN1YiI6IjVmYmE0YjVjMDgxNmM3MDAzZThjYjk4OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5nQCtapHMYchh_WH0ZWXEdaqTH6i-G0DzZGwM-9pT0w"
+            authorization: "Bearer ".concat(_api_Movie__WEBPACK_IMPORTED_MODULE_1__["default"].bearer)
           },
           processData: false,
           data: "{}"
         };
         $.ajax(settings).done(function (response) {
           self.searchResults = response.results;
-          console.log(self.searchResults);
         });
       }
     }
@@ -2485,6 +2486,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _api_Movie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../api/Movie */ "./resources/js/api/Movie.js");
 //
 //
 //
@@ -2656,6 +2658,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
   data: function data() {
@@ -2678,11 +2681,11 @@ __webpack_require__.r(__webpack_exports__);
     var settings = {
       async: true,
       crossDomain: true,
-      url: "https://api.themoviedb.org/3/trending/all/day?api_key=f7e72cbd7a25ab004e69d8157a40c77f&language=en-US&page=" + pageNumber,
+      url: "".concat(_api_Movie__WEBPACK_IMPORTED_MODULE_0__["default"].apiUrl, "/trending/all/day?api_key=f7e72cbd7a25ab004e69d8157a40c77f&language=en-US&page=") + pageNumber,
       method: "GET",
       headers: {
         "content-type": "application/json;charset=utf-8",
-        authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmN2U3MmNiZDdhMjVhYjAwNGU2OWQ4MTU3YTQwYzc3ZiIsInN1YiI6IjVmYmE0YjVjMDgxNmM3MDAzZThjYjk4OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5nQCtapHMYchh_WH0ZWXEdaqTH6i-G0DzZGwM-9pT0w"
+        authorization: "Bearer ".concat(_api_Movie__WEBPACK_IMPORTED_MODULE_0__["default"].bearer)
       },
       processData: false,
       data: "{}"
@@ -58393,6 +58396,23 @@ var Api = function Api() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Api);
+
+/***/ }),
+
+/***/ "./resources/js/api/Movie.js":
+/*!***********************************!*\
+  !*** ./resources/js/api/Movie.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  apiUrl: 'https://api.themoviedb.org/3',
+  apiKey: 'f7e72cbd7a25ab004e69d8157a40c77f',
+  bearer: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmN2U3MmNiZDdhMjVhYjAwNGU2OWQ4MTU3YTQwYzc3ZiIsInN1YiI6IjVmYmE0YjVjMDgxNmM3MDAzZThjYjk4OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5nQCtapHMYchh_WH0ZWXEdaqTH6i-G0DzZGwM-9pT0w'
+});
 
 /***/ }),
 
