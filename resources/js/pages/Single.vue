@@ -174,7 +174,7 @@
                 <div class="mr-5">
                   <img
                     class="rounded-full w-20 h-20 border-2 border-transparent hover:border-indigo-400"
-                    src="https://pbs.twimg.com/profile_images/1128143121475342337/e8tkhRaz_normal.jpg"
+                    :src="'/images/nseibidapo.jpg'"
                     alt="Andy Leverenz"
                   />
                   <h5>James Ban</h5>
@@ -185,7 +185,7 @@
                 <div class="mr-2">
                   <img
                     class="rounded-full w-20 h-20 border-2 border-transparent hover:border-indigo-400"
-                    src="https://pbs.twimg.com/profile_images/1128143121475342337/e8tkhRaz_normal.jpg"
+                    :src="'/images/nseibidapo.jpg'"
                     alt="Andy Leverenz"
                   />
                   <h5>James Ban</h5>

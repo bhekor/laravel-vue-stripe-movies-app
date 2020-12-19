@@ -78,7 +78,7 @@
         >
           <img
             class="rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400"
-            src="https://pbs.twimg.com/profile_images/1128143121475342337/e8tkhRaz_normal.jpg"
+            :src="'/images/nseibidapo.jpg'"
             alt="Andy Leverenz"
           />
         </a>

@@ -40287,7 +40287,21 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(0)
+            _c(
+              "a",
+              {
+                staticClass:
+                  "lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor",
+                attrs: { href: "#" }
+              },
+              [
+                _c("img", {
+                  staticClass:
+                    "rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400",
+                  attrs: { src: "/images/nseibidapo.jpg", alt: "Andy Leverenz" }
+                })
+              ]
+            )
           ]
         )
       ]
@@ -40466,32 +40480,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass:
-          "lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor",
-        attrs: { href: "#" }
-      },
-      [
-        _c("img", {
-          staticClass:
-            "rounded-full w-10 h-10 border-2 border-transparent hover:border-indigo-400",
-          attrs: {
-            src:
-              "https://pbs.twimg.com/profile_images/1128143121475342337/e8tkhRaz_normal.jpg",
-            alt: "Andy Leverenz"
-          }
-        })
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -41287,7 +41276,17 @@ var render = function() {
                     "div",
                     { staticClass: "flex items-center justify-between" },
                     [
-                      _vm._m(0, true),
+                      _c("div", { staticClass: "flex items-center flex-1" }, [
+                        _c("img", {
+                          staticClass: "object-cover h-10 rounded-full",
+                          attrs: {
+                            src: "/images/nseibidapo.jpg",
+                            alt: "Avatar"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(0, true)
+                      ]),
                       _vm._v(" "),
                       article.release_date != ""
                         ? _c(
@@ -41333,33 +41332,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "flex items-center flex-1" }, [
-      _c("img", {
-        staticClass: "object-cover h-10 rounded-full",
-        attrs: {
-          src:
-            "https://thumbs.dreamstime.com/b/default-avatar-photo-placeholder-profile-icon-eps-file-easy-to-edit-default-avatar-photo-placeholder-profile-icon-124557887.jpg",
-          alt: "Avatar"
-        }
-      }),
+    return _c("div", { staticClass: "flex flex-col mx-2" }, [
+      _c(
+        "a",
+        {
+          staticClass: "font-semibold text-gray-700 hover:underline",
+          attrs: { href: "" }
+        },
+        [_vm._v("\n                  Fajrian Aidil Pratama\n                ")]
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "flex flex-col mx-2" }, [
-        _c(
-          "a",
-          {
-            staticClass: "font-semibold text-gray-700 hover:underline",
-            attrs: { href: "" }
-          },
-          [
-            _vm._v(
-              "\n                  Fajrian Aidil Pratama\n                "
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c("span", { staticClass: "mx-1 text-xs text-gray-600" }, [
-          _vm._v("Creator")
-        ])
+      _c("span", { staticClass: "mx-1 text-xs text-gray-600" }, [
+        _vm._v("Creator")
       ])
     ])
   }
@@ -42569,7 +42553,61 @@ var render = function() {
               _vm._v(" "),
               _c("hr", { staticClass: "border-gray-300" }),
               _vm._v(" "),
-              _vm._m(0)
+              _c("div", { staticClass: "pt-5" }, [
+                _c(
+                  "h4",
+                  {
+                    staticClass: "title-font font-medium text-2xl text-gray-900"
+                  },
+                  [_vm._v("\n              Featured Casts\n            ")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex flex-row pt-5" }, [
+                  _c("div", { staticClass: "mr-5" }, [
+                    _c("img", {
+                      staticClass:
+                        "rounded-full w-20 h-20 border-2 border-transparent hover:border-indigo-400",
+                      attrs: {
+                        src: "/images/nseibidapo.jpg",
+                        alt: "Andy Leverenz"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("h5", [_vm._v("James Ban")]),
+                    _vm._v(" "),
+                    _c(
+                      "h2",
+                      {
+                        staticClass:
+                          "text-sm title-font text-gray-500 tracking-widest"
+                      },
+                      [_vm._v("\n                  Designer\n                ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mr-2" }, [
+                    _c("img", {
+                      staticClass:
+                        "rounded-full w-20 h-20 border-2 border-transparent hover:border-indigo-400",
+                      attrs: {
+                        src: "/images/nseibidapo.jpg",
+                        alt: "Andy Leverenz"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("h5", [_vm._v("James Ban")]),
+                    _vm._v(" "),
+                    _c(
+                      "h2",
+                      {
+                        staticClass:
+                          "text-sm title-font text-gray-500 tracking-widest"
+                      },
+                      [_vm._v("\n                  Designer\n                ")]
+                    )
+                  ])
+                ])
+              ])
             ]
           )
         ])
@@ -42577,62 +42615,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "pt-5" }, [
-      _c(
-        "h4",
-        { staticClass: "title-font font-medium text-2xl text-gray-900" },
-        [_vm._v("\n              Featured Casts\n            ")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "flex flex-row pt-5" }, [
-        _c("div", { staticClass: "mr-5" }, [
-          _c("img", {
-            staticClass:
-              "rounded-full w-20 h-20 border-2 border-transparent hover:border-indigo-400",
-            attrs: {
-              src:
-                "https://pbs.twimg.com/profile_images/1128143121475342337/e8tkhRaz_normal.jpg",
-              alt: "Andy Leverenz"
-            }
-          }),
-          _vm._v(" "),
-          _c("h5", [_vm._v("James Ban")]),
-          _vm._v(" "),
-          _c(
-            "h2",
-            { staticClass: "text-sm title-font text-gray-500 tracking-widest" },
-            [_vm._v("\n                  Designer\n                ")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "mr-2" }, [
-          _c("img", {
-            staticClass:
-              "rounded-full w-20 h-20 border-2 border-transparent hover:border-indigo-400",
-            attrs: {
-              src:
-                "https://pbs.twimg.com/profile_images/1128143121475342337/e8tkhRaz_normal.jpg",
-              alt: "Andy Leverenz"
-            }
-          }),
-          _vm._v(" "),
-          _c("h5", [_vm._v("James Ban")]),
-          _vm._v(" "),
-          _c(
-            "h2",
-            { staticClass: "text-sm title-font text-gray-500 tracking-widest" },
-            [_vm._v("\n                  Designer\n                ")]
-          )
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

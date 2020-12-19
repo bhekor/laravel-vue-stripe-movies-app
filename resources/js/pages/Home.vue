@@ -145,7 +145,7 @@
               <div class="flex items-center flex-1">
                 <img
                   class="object-cover h-10 rounded-full"
-                  src="https://thumbs.dreamstime.com/b/default-avatar-photo-placeholder-profile-icon-eps-file-easy-to-edit-default-avatar-photo-placeholder-profile-icon-124557887.jpg"
+                  :src="'/images/nseibidapo.jpg'"
                   alt="Avatar"
                 />
                 <div class="flex flex-col mx-2">
