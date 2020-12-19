@@ -170,7 +170,7 @@
 </template>
 
 <script>
-import movie from "../api/Movie";
+import movieApi from "../api/Movie";
 
 export default {
   name: "Home",
@@ -195,19 +195,18 @@ export default {
       async: true,
       crossDomain: true,
       url:
-        `${movie.apiUrl}/trending/all/day?api_key=f7e72cbd7a25ab004e69d8157a40c77f&language=en-US&page=` +
+        `${movieApi.apiUrl}/trending/all/day?api_key=${movieApi.apiKey}&language=en-US&page=` +
         pageNumber,
       method: "GET",
       headers: {
         "content-type": "application/json;charset=utf-8",
-        authorization: `Bearer ${movie.bearer}`,
+        authorization: `Bearer ${movieApi.bearer}`,
       },
       processData: false,
       data: "{}",
     };
     $.ajax(settings).done(function (response) {
       self.articles = response.results;
-      console.log(self.articles);
     });
   },
   methods: {},

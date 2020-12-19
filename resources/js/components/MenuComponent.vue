@@ -171,7 +171,7 @@
 
 <script>
 import User from "../api/User";
-import movie from "../api/Movie";
+import movieApi from "../api/Movie";
 
 export default {
   data() {
@@ -194,11 +194,11 @@ export default {
         var settings = {
           async: true,
           crossDomain: true,
-          url: `${movie.apiUrl}/search/movie?query=` + query,
+          url: `${movieApi.apiUrl}/search/movie?query=` + query,
           method: "GET",
           headers: {
             "content-type": "application/json;charset=utf-8",
-            authorization: `Bearer ${movie.bearer}`,
+            authorization: `Bearer ${movieApi.bearer}`,
           },
           processData: false,
           data: "{}",

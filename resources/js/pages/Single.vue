@@ -156,16 +156,6 @@
               </h2>
             </div>
             <div class="flex pt-5 pb-10">
-              <!-- <button
-                class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
-                v-for="(video, index) in videos"
-                :key="index"
-              >
-                <a :href="'https://www.youtube.com/watch?v=' + video.key"
-                  >Watch Trailer</a
-                >
-              </button> -->
-
               <button
                 class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
               >
@@ -213,6 +203,8 @@
 </template>
 
 <script>
+import movieApi from "../api/Movie";
+
 export default {
   name: "Single",
   data() {
@@ -230,15 +222,11 @@ export default {
     var settings = {
       async: true,
       crossDomain: true,
-      url:
-        "https://api.themoviedb.org/3/movie/" +
-        movie_id +
-        "?api_key=f7e72cbd7a25ab004e69d8157a40c77f",
+      url: `${movieApi.apiUrl}/movie/` + movie_id + `?api_key=${movieApi.apiKey}`,
       method: "GET",
       headers: {
         "content-type": "application/json;charset=utf-8",
-        authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmN2U3MmNiZDdhMjVhYjAwNGU2OWQ4MTU3YTQwYzc3ZiIsInN1YiI6IjVmYmE0YjVjMDgxNmM3MDAzZThjYjk4OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5nQCtapHMYchh_WH0ZWXEdaqTH6i-G0DzZGwM-9pT0w",
+        authorization: `Bearer ${movieApi.bearer}`,
       },
       processData: false,
       data: "{}",
@@ -253,14 +241,11 @@ export default {
         async: true,
         crossDomain: true,
         url:
-          "https://api.themoviedb.org/3/movie/" +
-          movie_id +
-          "/videos?api_key=f7e72cbd7a25ab004e69d8157a40c77f",
+          `${movieApi.apiUrl}/movie/` + movie_id + `/videos?api_key=${movieApi.apiKey}`,
         method: "GET",
         headers: {
           "content-type": "application/json;charset=utf-8",
-          authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmN2U3MmNiZDdhMjVhYjAwNGU2OWQ4MTU3YTQwYzc3ZiIsInN1YiI6IjVmYmE0YjVjMDgxNmM3MDAzZThjYjk4OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5nQCtapHMYchh_WH0ZWXEdaqTH6i-G0DzZGwM-9pT0w",
+          authorization: `Bearer ${movieApi.bearer}`,
         },
         processData: false,
         data: "{}",
