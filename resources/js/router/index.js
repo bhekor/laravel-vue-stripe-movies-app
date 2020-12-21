@@ -20,7 +20,8 @@ const router = new VueRouter({
         {
             path: '/single/:id',
             name: 'single',
-            component: Single
+            component: Single,
+            meta: { authOnly: true }
         },
         {
             path: '/login',
